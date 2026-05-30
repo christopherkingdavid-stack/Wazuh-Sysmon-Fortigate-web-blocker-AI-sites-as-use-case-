@@ -1,0 +1,24 @@
+<Sysmon schemaversion="4.90">
+  <EventFiltering>
+
+    <!-- Event ID 22: DNS Queries -->
+    <DnsQuery onmatch="include">
+      <QueryName condition="contains">openai.com</QueryName>
+      <QueryName condition="contains">anthropic.com</QueryName>
+      <QueryName condition="contains">claude.ai</QueryName>
+      <QueryName condition="contains">gemini.google.com</QueryName>
+      <QueryName condition="contains">copilot.microsoft.com</QueryName>
+      <QueryName condition="contains">perplexity.ai</QueryName>
+      <QueryName condition="contains">mistral.ai</QueryName>
+      <QueryName condition="contains">huggingface.co</QueryName>
+    </DnsQuery>
+
+    <!-- Event ID 13: Registry Value Set -->
+    <RegistryEvent onmatch="include">
+      <TargetObject condition="contains">OpenAI</TargetObject>
+      <TargetObject condition="contains">Anthropic</TargetObject>
+      <TargetObject condition="contains">CopilotPlugin</TargetObject>
+    </RegistryEvent>
+
+  </EventFiltering>
+</Sysmon>
